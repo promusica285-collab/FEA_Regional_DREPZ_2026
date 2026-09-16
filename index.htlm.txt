@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agenda Oficial FEA 2026</title>
+  <!-- Google Fonts & Lucide Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --mep-blue: #002F6C;
+      --mep-blue-hover: #001f48;
+      --mep-accent: #0284C7;
+      --mep-accent-soft: #E0F2FE;
+      --bg-light: #F8FAFC;
+      --surface: #FFFFFF;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      --badge-bg: #F1F5F9;
+      --radius: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -2px rgba(0,0,0,0.05);
+      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding-bottom: 60px;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, var(--mep-blue) 0%, #001A3D 100%);
+      color: #ffffff;
+      padding: 3.5rem 1.5rem 4rem;
+      text-align: center;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: #94A3B8;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .badge-year {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 4px 14px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    /* MAIN CONTAINER */
+    .container {
+      max-width: 1200px;
+      margin: -2rem auto 0;
+      padding: 0 1.25rem;
+    }
+
+    /* SEARCH & CONTROLS */
+    .controls-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .search-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .search-wrapper i {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      width: 20px;
+      height: 20px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.85rem 1rem 0.85rem 2.75rem;
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .search-input:focus {
+      border-color: var(--mep-accent);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
+    }
+
+    /* TABS */
+    .tabs-days {
+      display: flex;
+      overflow-x: auto;
+      gap: 0.5rem;
+      padding-bottom: 4px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      min-width: 170px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.85rem 1rem;
+      background: #F1F5F9;
+      border: 1.5px solid transparent;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: var(--transition);
+    }
+
+    .tab-btn:hover {
+      background: #E2E8F0;
+    }
+
+    .tab-btn.active {
+      background: var(--mep-blue);
+      color: #fff;
+      border-color: var(--mep-blue);
+    }
+
+    .tab-btn .day-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .tab-btn .day-sub {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      margin-top: 2px;
+    }
+
+    /* STATS & QUICK FILTER */
+    .summary-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      padding: 0 0.5rem;
+    }
+
+    /* VENUE BLOCK */
+    .venue-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border-color);
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    .venue-header {
+      background: #F8FAFC;
+      border-bottom: 1px solid var(--border-color);
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .venue-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .venue-icon-box {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: var(--mep-accent-soft);
+      color: var(--mep-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .venue-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--mep-blue);
+    }
+
+    .venue-session {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* SCHEDULE GRID */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 1rem;
+      padding: 1.5rem;
+    }
+
+    /* EVENT CARD */
+    .event-item {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1rem 1.15rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .event-item:hover {
+      border-color: #CBD5E1;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .event-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--mep-blue);
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+
+    .event-badges {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .discipline-badge {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      font-weight: 600;
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .circuit-badge {
+      background: #F1F5F9;
+      color: #475569;
+      font-weight: 600;
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    .event-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+      line-height: 1.35;
+    }
+
+    .event-school {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--mep-accent);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .event-meta {
+      border-top: 1px dashed var(--border-color);
+      padding-top: 0.65rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .event-meta strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    /* EMPTY STATE */
+    .no-results {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px dashed var(--border-color);
+      display: none;
+    }
+
+    .no-results i {
+      width: 48px;
+      height: 48px;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 640px) {
+      header {
+        padding: 2.5rem 1rem 3rem;
+      }
+      header h1 {
+        font-size: 1.7rem;
+      }
+      .events-grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge-year">Festival Estudiantil de las Artes</div>
+    <h1>Programación Regional FEA 2026</h1>
+    <p>Consulta las presentaciones de las diferentes disciplinas, circuitos y recintos programados.</p>
+  </header>
+
+  <main class="container">
+    <!-- CONTROLES Y BUSCADOR -->
+    <section class="controls-card">
+      <div class="search-wrapper">
+        <i data-lucide="search"></i>
+        <input type="text" id="searchInput" class="search-input" placeholder="Buscar por obra, institución, participante, disciplina o circuito...">
+      </div>
+
+      <div class="tabs-days" id="dayTabs">
+        <button class="tab-btn active" data-day="day-1">
+          <span class="day-title">Lunes 28 Set</span>
+          <span class="day-sub">Coreografías</span>
+        </button>
+        <button class="tab-btn" data-day="day-2">
+          <span class="day-title">Martes 29 Set</span>
+          <span class="day-sub">Música Primaria</span>
+        </button>
+        <button class="tab-btn" data-day="day-3">
+          <span class="day-title">Miércoles 30 Set</span>
+          <span class="day-sub">Música Secundaria / Noct.</span>
+        </button>
+        <button class="tab-btn" data-day="day-4">
+          <span class="day-title">Jueves 01 Oct</span>
+          <span class="day-sub">Escénicas & Visuales</span>
+        </button>
+        <button class="tab-btn" data-day="day-5">
+          <span class="day-title">Viernes 02 Oct</span>
+          <span class="day-sub">Artes Literarias</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ESTADÍSTICAS RÁPIDAS -->
+    <div class="summary-bar">
+      <span id="resultsCount">Cargando presentaciones...</span>
+      <span id="activeFilterBadge">Mostrando: Todos los recintos</span>
+    </div>
+
+    <!-- CONTENEDOR DE PROGRAMAS POR DÍA -->
+    <div id="scheduleContainer"></div>
+
+    <!-- MENSAJE VACÍO -->
+    <div class="no-results" id="emptyState">
+      <i data-lucide="folder-search"></i>
+      <h3>No se encontraron presentaciones</h3>
+      <p>Intenta con otra palabra clave o revisa los filtros aplicados.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>Dirección Regional de Educación • Ministerio de Educación Pública (MEP)</p>
+  </footer>
+
+  <script>
+    // AGENDA ESTRUCTURADA DEL FEA 2026
+    const scheduleData = [
+      {
+        id: "day-1",
+        name: "Lunes 28 de setiembre",
+        sub: "Artes Escénicas / Coreografías",
+        venues: [
+          {
+            name: "Gimnasio CTP San Isidro",
+            session: "8:00 a.m. • Primaria (Acto Inaugural)",
+            events: [
+              { discipline: "Coreografía de Baile", circuit: "03", title: "Mix baile popular niñas", school: "Escuela Hernán Rodríguez Ruiz", participants: "11 participantes" },
+              { discipline: "Coreografía de Baile", circuit: "01", title: "90-360", school: "Escuela Melico Salazar", participants: "37 participantes" },
+              { discipline: "Coreografía de Baile", circuit: "05", title: "Coreografía sonido de barrio", school: "Escuela Peñas Blancas", participants: "12 participantes" },
+              { discipline: "Coreografía de Baile", circuit: "04", title: "Costa Rica de antaño", school: "Escuela José María Chaverrí Picado", participants: "16 participantes" },
+              { discipline: "Coreografía de Baile", circuit: "09", title: "Cheap Thrills", school: "Escuela San Pedro", participants: "2 participantes" },
+              { discipline: "Coreografía de Baile", circuit: "08", title: "Mix fiesta latina", school: "Escuela Las Mesas", participants: "7 participantes" },
+              { discipline: "Coreografía de Baile", circuit: "02", title: "El rock de la cárcel", school: "Escuela Santa Rosa", participants: "6 participantes" },
+              { discipline: "Coreografía de Baile", circuit: "07", title: "Mix de música popular", school: "Escuela Río Grande", participants: "13 participantes" },
+              { discipline: "Coreografía de Baile", circuit: "06", title: "Mix popular", school: "Escuela Las Mercedes", participants: "4 participantes" },
+              { discipline: "Coreografía de Baile", circuit: "10", title: "Wavin Flag", school: "Escuela La Angostura", participants: "17 participantes" },
+              { discipline: "Coreografía Conceptual", circuit: "03", title: "Tres almas floreciendo al ritmo de la música", school: "U.P. José Breinderhoff (Primaria)", participants: "3 participantes" },
+              { discipline: "Coreografía Conceptual", circuit: "01", title: "Abracadabra", school: "Escuela Pedro Pérez Zeledón", participants: "11 participantes" },
+              { discipline: "Coreografía Conceptual", circuit: "09", title: "Baile indígena", school: "Escuela Arenilla", participants: "2 participantes" },
+              { discipline: "Coreografía Conceptual", circuit: "02", title: "La llorona: memorias", school: "Escuela Zaragoza", participants: "9 participantes" },
+              { discipline: "Coreografía Conceptual", circuit: "06", title: "La calle de las sirenas", school: "Escuela Las Mercedes", participants: "12 participantes" },
+              { discipline: "Coreografía Conceptual", circuit: "10", title: "Mix de las emociones", school: "Escuela La Ceniza", participants: "9 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "03", title: "Boyero carretero", school: "Escuela Villa Ligia", participants: "14 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "01", title: "Sal/Sol/0612/", school: "Escuela 12 de Marzo", participants: "21 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "05", title: "Soy", school: "Escuela María Mora Ureña", participants: "18 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "04", title: "Fiestas de mi tierra", school: "Escuela La Uvita", participants: "16 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "09", title: "Costa Rica, tuyo es mi corazón", school: "Escuela San Pedro", participants: "16 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "08", title: "De regreso a la quebrada", school: "Escuela Valle de la Cruz", participants: "11 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "02", title: "Popurrí Mauricio Piedra", school: "Escuela Pedregoso", participants: "18 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "07", title: "Carreta Criolla", school: "Escuela Naranjo de Platanares", participants: "11 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "06", title: "Bailarinas de Folclor", school: "Escuela Quizarrá", participants: "6 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "10", title: "Así es mi Tierra", school: "Escuela La Ceniza", participants: "21 participantes" },
+              { discipline: "Folclórica Internacional", circuit: "03", title: "Mamá África", school: "Escuela Laboratorio", participants: "19 participantes" },
+              { discipline: "Folclórica Internacional", circuit: "01", title: "Tierra sin fronteras", school: "Escuela Sinaí", participants: "6 participantes" },
+              { discipline: "Folclórica Internacional", circuit: "08", title: "Coqueta", school: "Escuela Valle de la Cruz", participants: "10 participantes" }
+            ]
+          },
+          {
+            name: "Gimnasio CTP San Isidro",
+            session: "12:30 p.m. • Secundaria",
+            events: [
+              { discipline: "Coreografía de Baile", circuit: "03", title: "ADN Street", school: "UP José Breinderhoff", participants: "17 participantes" },
+              { discipline: "Coreografía de Baile", circuit: "01", title: "Reggae-Tonroots", school: "Centro Educativo Fray Felipe", participants: "10 participantes" },
+              { discipline: "Coreografía de Baile", circuit: "05", title: "Baile de un día", school: "CTP General Viejo", participants: "10 participantes" },
+              { discipline: "Coreografía de Baile", circuit: "02", title: "MIX URBAN SQUAD", school: "CTP AIRA", participants: "5 participantes" },
+              { discipline: "Coreografía de Baile", circuit: "07", title: "Mix tropical", school: "CTP Platanares", participants: "15 participantes" },
+              { discipline: "Coreografía Conceptual", circuit: "01", title: "High School Love", school: "Liceo Sinaí", participants: "26 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "03", title: "Tuyo es mi corazón", school: "Liceo Fernando Volio Jiménez", participants: "10 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "01", title: "Cartago, ciudad de tradiciones", school: "Liceo Sinaí", participants: "4 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "05", title: "Mi tierra", school: "Liceo Rural Buena Vista", participants: "11 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "04", title: "Juana Pereira", school: "Liceo La Uvita", participants: "20 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "08", title: "Carreta Criolla", school: "CTP Pejibaye", participants: "12 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "02", title: "Sol de mi tierra", school: "Liceo Rural El Jardín", participants: "13 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "07", title: "Costa Rica de fiesta", school: "CTP Platanares", participants: "15 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "06", title: "Labrador", school: "Liceo Las Mercedes", participants: "9 participantes" },
+              { discipline: "Folclórica Internacional", circuit: "01", title: "Folclor mexicano: la llorona", school: "U.P. Dr. R.A. Calderón Guardia", participants: "10 participantes" },
+              { discipline: "Folclórica Internacional", circuit: "03", title: "Grain o ear", school: "Liceo Fernando Volio Jiménez", participants: "3 participantes" },
+              { discipline: "Folclórica Internacional", circuit: "08", title: "Chiricano de mi vida", school: "CTP Pejibaye", participants: "3 participantes" },
+              { discipline: "Folclórica Internacional", circuit: "02", title: "Maitembe", school: "Liceo Rural Río Nuevo", participants: "2 participantes" },
+              { discipline: "Folclórica Internacional", circuit: "07", title: "Llantos de Magdalena", school: "Liceo Concepción de Daniel Flores", participants: "35 participantes" }
+            ]
+          },
+          {
+            name: "Gimnasio CTP San Isidro",
+            session: "2:30 p.m. • Modalidades Nocturnas",
+            events: [
+              { discipline: "Proyección Folclórica CR", circuit: "03", title: "Ticas lindas", school: "CINDEA Lomas de Cocorí", participants: "5 participantes" },
+              { discipline: "Proyección Folclórica CR", circuit: "01", title: "Entre frío y la espera", school: "Colegio Nocturno de Sinaí", participants: "6 participantes" },
+              { discipline: "Coreografía Conceptual", circuit: "08", title: "Hoy es mejor que ayer", school: "CINDEA Pejibaye", participants: "2 participantes" }
+            ]
+          }
+        ]
+      },
+      {
+        id: "day-2",
+        name: "Martes 29 de setiembre",
+        sub: "Artes Musicales Primaria",
+        venues: [
+          {
+            name: "CTP San Isidro",
+            session: "7:30 a.m. • Primaria",
+            events: [
+              { discipline: "Coro", circuit: "02", title: "Voces de libertad", school: "Escuela Valencia", participants: "8 participantes (3M/5F)" },
+              { discipline: "Coro", circuit: "05", title: "Una sana convivencia con el medio hay que tener", school: "Escuela Peñas Blancas", participants: "18 participantes (5M/13F)" },
+              { discipline: "Coro", circuit: "06", title: "Somos Arte", school: "Escuela Navajuelar", participants: "10 participantes (3M/7F)" },
+              { discipline: "Coro", circuit: "10", title: "Voces que construyen paz", school: "Escuela Lomas de Cocorí", participants: "35 participantes (9M/26F)" },
+              { discipline: "Canción Original Niños/as", circuit: "03", title: "Lindo Valle", school: "Escuela Villa Ligia", participants: "Abigail Ávila Carranza" },
+              { discipline: "Canción Original Niños/as", circuit: "01", title: "Un mundo mejor", school: "Escuela 12 de Marzo", participants: "Naima Salas Elizondo" },
+              { discipline: "Canción Original Niños/as", circuit: "04", title: "Arte y Expresión", school: "Escuela Tinamastes", participants: "Husai David Granados Godínez" },
+              { discipline: "Canción Original Niños/as", circuit: "02", title: "Libre", school: "Escuela Valencia", participants: "Valentina Garro Rojas" },
+              { discipline: "Canción Original Niños/as", circuit: "06", title: "En mis sueños", school: "Escuela Las Mercedes", participants: "Sarah de los Ángeles Pérez Quirós" },
+              { discipline: "Canción Original Niños/as", circuit: "10", title: "Oración de una niña", school: "Escuela Rosario Arroniz", participants: "Naiara Mora Cervantes" },
+              { discipline: "Ensamble Flautas Dulces", circuit: "01", title: "Sonidos de Alegría", school: "Escuela Pedro Pérez Zeledón", participants: "5 participantes (5F)" },
+              { discipline: "Ensamble Flautas Dulces", circuit: "02", title: "Viva la música", school: "Escuela Pedregoso", participants: "7 participantes (1M/6F)" },
+              { discipline: "Ensamble Flautas Dulces", circuit: "05", title: "Viva Costa Rica", school: "Escuela Buena Vista", participants: "7 participantes (5M/2F)" },
+              { discipline: "Ensamble Flautas Dulces", circuit: "07", title: "Amo mi país", school: "Escuela República de Bolivia", participants: "12 participantes (3M/9F)" },
+              { discipline: "Percusión Corporal", circuit: "03", title: "El ritmo que somos", school: "Escuela San Francisco de Asís", participants: "9 participantes (4M/5F)" },
+              { discipline: "Percusión Corporal", circuit: "09", title: "Pulso vital", school: "Escuela San Pedro", participants: "7 participantes (4M/3F)" },
+              { discipline: "Canción Popular Niños/as", circuit: "03", title: "Cucurrucucu", school: "Escuela Las Lagunas", participants: "Itzayana Sánchez Rojas" },
+              { discipline: "Canción Popular Niños/as", circuit: "01", title: "Si te atreves a soñar", school: "Escuela y Colegio Del Valle", participants: "Samantha Campos Campos" },
+              { discipline: "Canción Popular Niños/as", circuit: "05", title: "Linda muchachita", school: "Escuela Fernando Valverde Vega", participants: "Sara Montero Porras" },
+              { discipline: "Canción Popular Niños/as", circuit: "04", title: "Pura Vida en Costa Rica", school: "Escuela Tinamastes", participants: "Yohan Oporta Rivas" },
+              { discipline: "Canción Popular Niños/as", circuit: "09", title: "La Cigarra", school: "Escuela San Pedro", participants: "Kaylee Azarariad Elizondo Garro" },
+              { discipline: "Canción Popular Niños/as", circuit: "08", title: "Mi burrito", school: "Escuela El Águila", participants: "Farlen Rivera Marín" },
+              { discipline: "Canción Popular Niños/as", circuit: "02", title: "Se vende un Caballo", school: "Escuela Pensilvania", participants: "Mathias Yariel Quesada Arguedas" },
+              { discipline: "Canción Popular Niños/as", circuit: "07", title: "Un velero llamado libertad", school: "Escuela San Rafael", participants: "Stacy Cordero Bermúdez" },
+              { discipline: "Canción Popular Niños/as", circuit: "06", title: "Corre, corre corazón", school: "Escuela El Quemado", participants: "Nazareth Valeria Rojas Sánchez" },
+              { discipline: "Canción Popular Niños/as", circuit: "10", title: "Corriente y canelo", school: "Escuela Pavones", participants: "Junior Alvarado Pérez" },
+              { discipline: "Canción Típica Original CR", circuit: "03", title: "Mi Costa Rica", school: "Escuela Las Lagunas", participants: "Abrahan Leiva Gamboa" },
+              { discipline: "Canción Típica Original CR", circuit: "01", title: "Pura raíz cafetal", school: "Escuela La Asunción", participants: "Noah Mora Arias" },
+              { discipline: "Canción Típica Original CR", circuit: "07", title: "Costa Rica querida", school: "Escuela República de Bolivia", participants: "Naomi Rodríguez Varela" },
+              { discipline: "Canción Típica Popular CR", circuit: "03", title: "Tan Linda mi Costa Rica", school: "Escuela Villa Ligia", participants: "Sebastián Leiva Barrantes" },
+              { discipline: "Canción Típica Popular CR", circuit: "05", title: "Pampa", school: "Escuela Peñas Blancas", participants: "Scarlett Leonor Murillo Abarca" },
+              { discipline: "Canción Típica Popular CR", circuit: "09", title: "Pioneros", school: "Escuela Arenilla", participants: "Joyce Abarca Chávez" },
+              { discipline: "Canción Típica Popular CR", circuit: "08", title: "Amor de temporada", school: "Escuela Las Mesas", participants: "Ethan Jiménez Mendoza (vivo)" },
+              { discipline: "Canción Típica Popular CR", circuit: "02", title: "Soy Tico", school: "Escuela Pedregoso", participants: "Avery Fabiana Vargas Leiva" },
+              { discipline: "Canción Típica Popular CR", circuit: "06", title: "Por un frijol", school: "Escuela Las Mercedes", participants: "Sarah de los Ángeles Pérez Qirós" },
+              { discipline: "Canción Típica Popular CR", circuit: "10", title: "Soy Tico", school: "Escuela La Ceniza", participants: "Aleiny Zúñiga Cascante" },
+              { discipline: "Ensamble Instrumental Reciclable", circuit: "01", title: "Reciclando Vamos", school: "Escuela Pedro Pérez Zeledón", participants: "11 participantes (9M/2F)" },
+              { discipline: "Ensamble Instrumental Reciclable", circuit: "04", title: "El Ritmo del ambiente", school: "Escuela José María Chaverri P.", participants: "15 participantes (7M/8F)" },
+              { discipline: "Ensamble Instrumental Reciclable", circuit: "08", title: "Banda de los reciclados", school: "Escuela Las Mesas", participants: "10 participantes (7M/3F)" },
+              { discipline: "Ensamble Instrumental Reciclable", circuit: "06", title: "Caramba, que bueno es compartir", school: "Escuela Quizarrá", participants: "9 participantes (5M/4F)" },
+              { discipline: "Ensamble Instrumental Reciclable", circuit: "10", title: "Los tarros locos", school: "Escuela La Angostura", participants: "15 participantes (12M/3F)" },
+              { discipline: "Estudiantina", circuit: "03", title: "Tiempos distintos", school: "Escuela Las Juntas de Pacuar", participants: "20 participantes (8M/12F)" },
+              { discipline: "Estudiantina", circuit: "05", title: "Contra el mundo", school: "Escuela Guadalupe", participants: "22 participantes (13M/9F)" },
+              { discipline: "Estudiantina", circuit: "07", title: "Decido ser feliz", school: "Escuela San Carlos", participants: "41 participantes (15M/26F)" },
+              { discipline: "Estudiantina", circuit: "06", title: "La vida en la escuela", school: "Escuela El Carmen", participants: "17 participantes (8M/9F)" },
+              { discipline: "Estudiantina", circuit: "10", title: "Un mundo Valioso", school: "Escuela La Ceniza", participants: "30 participantes (8M/22F)" },
+              { discipline: "Grupo Instrumental Experimental", circuit: "06", title: "Soy música", school: "Escuela República de México", participants: "6 participantes (3M/3F)" },
+              { discipline: "Grupo Instrumental", circuit: "03", title: "Al Ritmo Mix", school: "Escuela Villa Ligia", participants: "10 participantes (7M/3F)" },
+              { discipline: "Grupo Instrumental", circuit: "02", title: "Vibra Natural", school: "Escuela Santa Rosa", participants: "6 participantes (3M/3F)" },
+              { discipline: "Grupo Instrumental", circuit: "04", title: "Ritmo del Viento", school: "Escuela José María Chaverri P.", participants: "5 participantes (3M/2F)" },
+              { discipline: "Marimba", circuit: "03", title: "Sonidos de mi escuela", school: "Escuela Las Lagunas", participants: "2 participantes (2F)" },
+              { discipline: "Rap", circuit: "05", title: "Guardianes del ambiente", school: "Escuela Fernando Valverde Vega", participants: "Alexa Arrollo Marín" },
+              { discipline: "Rap", circuit: "06", title: "Recreo mental", school: "Escuela el Quemado", participants: "Anthony Joel González Fernández" }
+            ]
+          }
+        ]
+      },
+      {
+        id: "day-3",
+        name: "Miércoles 30 de setiembre",
+        sub: "Artes Musicales Secundaria & Nocturna",
+        venues: [
+          {
+            name: "CTP San Isidro (Gimnasio)",
+            session: "7:30 a.m. • Secundaria & Nocturnas",
+            events: [
+              { discipline: "Grupo Instrumental", circuit: "03", title: "La espera", school: "Liceo Fernando Volio Jiménez", participants: "8 participantes (5M/3F)" },
+              { discipline: "Grupo Instrumental", circuit: "01", title: "Un lugar para todos", school: "Liceo Unesco", participants: "15 participantes (11M/4F)" },
+              { discipline: "Grupo Instrumental", circuit: "04", title: "Frecuencia Libre", school: "Liceo La Uvita", participants: "9 participantes (3M/6F)" },
+              { discipline: "Grupo Instrumental", circuit: "09", title: "Campana", school: "Liceo San Pedro", participants: "3 participantes (3M)" },
+              { discipline: "Grupo Instrumental", circuit: "07", title: "YE-ELE-VE", school: "CTP Platanares", participants: "7 participantes (5M/2F)" },
+              { discipline: "Canción Original", circuit: "01", title: "La enagua de mi Vieja", school: "Colegio La Asunción", participants: "Lianna Ávalos Fonseca" },
+              { discipline: "Canción Original", circuit: "05", title: "Lo que soñamos", school: "Liceo Canaán", participants: "Sarah McGaw Martínez" },
+              { discipline: "Canción Original", circuit: "04", title: "Creciendo", school: "Liceo La Uvita", participants: "Pamela Duarte Picado" },
+              { discipline: "Canción Original", circuit: "09", title: "Tu ausencia", school: "Liceo San Pedro", participants: "Eimy Varela Abarca" },
+              { discipline: "Canción Original", circuit: "02", title: "Para mi ibas a estar", school: "CTP AIRA", participants: "Ángel Román Arias" },
+              { discipline: "Canción Original", circuit: "08", title: "Entre la sangre de mi patria", school: "CTP Pejibaye", participants: "Miguel Delgado Valverde (vivo)" },
+              { discipline: "Canción Original", circuit: "07", title: "Tu visión", school: "Liceo Concepción de Daniel Flores", participants: "Mary Ann Breeding Jr Rodríguez" },
+              { discipline: "Canción Original", circuit: "03", title: "Desert", school: "Liceo Fernando Volio Jiménez", participants: "5 participantes (4M/1F)" },
+              { discipline: "Banda de Garaje", circuit: "01", title: "El presente y el mañana", school: "Liceo Unesco", participants: "12 participantes (6M/6F)" },
+              { discipline: "Banda de Garaje", circuit: "09", title: "Presentación Garaje", school: "Liceo San Pedro", participants: "7 participantes (5M/2F)" },
+              { discipline: "Canción Popular", circuit: "03", title: "Por qué me fui a enamorar de ti", school: "CTP San Isidro", participants: "María Zoe García Barquero" },
+              { discipline: "Canción Popular", circuit: "01", title: "Antes de ti", school: "Liceo Sinaí", participants: "Dayra Morera Ceciliano" },
+              { discipline: "Canción Popular", circuit: "05", title: "Mi talismán", school: "Liceo Canaán", participants: "Britanny Hidalgo Corrales" },
+              { discipline: "Canción Popular", circuit: "04", title: "La Jaula de oro", school: "Liceo Platanillo de Barú", participants: "Damian Díaz Díaz" },
+              { discipline: "Canción Popular", circuit: "09", title: "De contrabando", school: "Liceo San Pedro", participants: "Eimy Varela Abarca" },
+              { discipline: "Canción Popular", circuit: "08", title: "Vivir mi vida", school: "CTP Pejibaye", participants: "Mathias Segura Mora" },
+              { discipline: "Canción Popular", circuit: "02", title: "El triste", school: "Liceo Rural El Jardin", participants: "Nazareth Retana Hernández" },
+              { discipline: "Canción Popular", circuit: "07", title: "El Rey", school: "CTP Platanares", participants: "Kael Arias García" },
+              { discipline: "Canción Popular", circuit: "06", title: "Confieso", school: "Liceo San Francisco", participants: "Krisbeth Valverde Vásquez" },
+              { discipline: "Canción Popular", circuit: "10", title: "Rolling in the deep", school: "Liceo Jerusalén", participants: "Nataly Picado Núñez" },
+              { discipline: "Grupo Instrumental Experimental", circuit: "03", title: "The First Jazz 2.0", school: "CTP San Isidro", participants: "5 participantes (5M)" },
+              { discipline: "Grupo Instrumental Experimental", circuit: "01", title: "Una misma ruta", school: "Liceo Unesco", participants: "14 participantes (10M/4F)" },
+              { discipline: "Grupo Instrumental Experimental", circuit: "09", title: "Temporalidad", school: "Liceo San Pedro", participants: "7 participantes (5M/2F)" },
+              { discipline: "Canción Típica Original CR", circuit: "03", title: "Cuando", school: "Liceo Fernando Volio Jiménez", participants: "Dana Chinchilla Bonilla" },
+              { discipline: "Canción Típica Original CR", circuit: "01", title: "De mi depende", school: "Liceo Unesco", participants: "Yahir Solís Cascante" },
+              { discipline: "Canción Típica Original CR", circuit: "05", title: "Eco del Ayer", school: "Liceo Canaán", participants: "Genesis Kristal Henández Méndez" },
+              { discipline: "Canción Típica Original CR", circuit: "06", title: "Cuéntame una historia", school: "Liceo Las Mercedes", participants: "Dana Garro Fernández" },
+              { discipline: "Canción Típica Popular CR", circuit: "03", title: "Pampa", school: "Liceo Fernando Volio J.", participants: "Dana Chinchilla Bonilla" },
+              { discipline: "Canción Típica Popular CR", circuit: "01", title: "Costa Rica", school: "Centro de Enseñanza Especial", participants: "Amanda María Gamboa Cordero" },
+              { discipline: "Canción Típica Popular CR", circuit: "05", title: "Espíritu guanacasteco", school: "Liceo Canaán", participants: "Alana MaGaw Martinez" },
+              { discipline: "Canción Típica Popular CR", circuit: "09", title: "Costa Rica", school: "Liceo San Pedro", participants: "Briana Picado González" },
+              { discipline: "Canción Típica Popular CR", circuit: "08", title: "Costa Rica", school: "Liceo San Antonio", participants: "Abril Solís Solano" },
+              { discipline: "Canción Típica Popular CR", circuit: "06", title: "Caña dulce", school: "Liceo Las Mercedes", participants: "Dana Garro Fernández" },
+              { discipline: "Cantautor/a", circuit: "03", title: "El tiempo", school: "CTP San Isidro", participants: "Edwin Antonio Guzmán Arguello" },
+              { discipline: "Cantautor/a", circuit: "01", title: "Mi Dios", school: "Liceo Sinaí", participants: "David Ceciliano Morera" },
+              { discipline: "Cantautor/a", circuit: "06", title: "Prefiero alejarme", school: "Liceo Las Mercedes", participants: "Dylan Padilla Fernández" },
+              { discipline: "Cimarrona", circuit: "01", title: "El chis pum", school: "Liceo Unesco", participants: "12 participantes (11M/1F)" },
+              { discipline: "Coro", circuit: "01", title: "El valor", school: "Liceo Sinaí", participants: "33 participantes (12M/21F)" },
+              { discipline: "Coro", circuit: "05", title: "Somos más", school: "Liceo Canaán", participants: "8 participantes (8F)" },
+              { discipline: "Coro", circuit: "06", title: "Lo heredado es inspiración", school: "Liceo Las Mercedes", participants: "6 participantes (3M/3F)" },
+              { discipline: "Ensamble Instrumental Reciclable", circuit: "03", title: "Los chata-reros", school: "CTP San Isidro", participants: "10 participantes (7M/3F)" },
+              { discipline: "Ensamble Instrumental Reciclable", circuit: "05", title: "Ecosistema", school: "Liceo Canaán", participants: "10 participantes (2M/8F)" },
+              { discipline: "Estudiantina", circuit: "05", title: "Entre dos montañas", school: "Liceo Canaán", participants: "29 participantes (11M/18F)" },
+              { discipline: "Rap", circuit: "01", title: "Rap en seis octavos", school: "Colegio La Asunción", participants: "Gael Arias Elizondo" },
+              { discipline: "Rap", circuit: "06", title: "Me haces falta", school: "Liceo Las Mercedes", participants: "Dylan Padilla Fernández" },
+              { discipline: "Canción Popular (Nocturna)", circuit: "03", title: "Él siempre reina", school: "Colegio Nocturno de Palmares", participants: "Karol Árias Campos" },
+              { discipline: "Canción Popular (Nocturna)", circuit: "01", title: "Déjame quererte para siempre", school: "Colegio Académico Nocturno Sinaí", participants: "Dayan Mariana Arias Zúñiga" },
+              { discipline: "Canción Popular (Nocturna)", circuit: "08", title: "Buscando una señal", school: "CINDEA Pejibaye", participants: "Maribel González Rojas" },
+              { discipline: "Canción Popular (Nocturna)", circuit: "09", title: "Amor eterno", school: "CINDEA Liceo Nocturno San Pedro", participants: "Elizabeth Sandoval" },
+              { discipline: "Canción Típica Popular CR (Nocturna)", circuit: "03", title: "Soy tico", school: "CINDEA San Francisco", participants: "Bryan Villalta Mora" },
+              { discipline: "Canción Original (Nocturna)", circuit: "08", title: "Quizás mañana el sol saldrá", school: "CINDEA Pejibaye", participants: "Maribel González Rojas" }
+            ]
+          }
+        ]
+      },
+      {
+        id: "day-4",
+        name: "Jueves 01 de octubre",
+        sub: "Escénicas, Esculturas & Pintura Corporal",
+        venues: [
+          {
+            name: "Auditorio CTP San Isidro",
+            session: "8:00 a.m. • Primaria",
+            events: [
+              { discipline: "Cuentacuentos", circuit: "03", title: "Isabella y su amigo Oli", school: "Escuela Hernán Rodríguez Ruiz", participants: "Isabella Vega Hidalgo" },
+              { discipline: "Cuentacuentos", circuit: "01", title: "Abrigo gris", school: "Escuela Sagrada Familia", participants: "Alice Solórzano Naranjo" },
+              { discipline: "Cuentacuentos", circuit: "05", title: "Una lágrima que vaga", school: "Escuela San Gerardo", participants: "Korayma Acuña Elizondo" },
+              { discipline: "Cuentacuentos", circuit: "09", title: "Cantarina está enferma", school: "Escuela La Esperanza", participants: "Dylan Santiago Alvarado Garro" },
+              { discipline: "Cuentacuentos", circuit: "08", title: "El baúl de mi abuelo sesentón", school: "Escuela Santa Fe", participants: "Thiago Elizondo Retana" },
+              { discipline: "Cuentacuentos", circuit: "02", title: "La pequeña morpho azul", school: "Escuela Gustavo Agüero Barrantes", participants: "Matías García Elizondo" },
+              { discipline: "Cuentacuentos", circuit: "07", title: "Róger y el tiquete premiado", school: "Escuela La Sierra de Platanares", participants: "Thiago Daniel Navarro Barquero" },
+              { discipline: "Cuentacuentos", circuit: "06", title: "El viaje de conejito Tomás", school: "Escuela El Pilar", participants: "Franco Arias Hernández" },
+              { discipline: "Cuentacuentos", circuit: "10", title: "Raíces que florecen", school: "Escuela Bajo Las Esperanzas", participants: "Alana Rojas Romero" },
+              { discipline: "Poesía Coral", circuit: "03", title: "Un poeta, un pensamiento, el tiempo y yo", school: "Escuela Las Lagunas", participants: "17 participantes" },
+              { discipline: "Poesía Coral", circuit: "01", title: "No te rindas", school: "UP DR R.A. Calderón Guardia", participants: "10 participantes" },
+              { discipline: "Poesía Coral", circuit: "05", title: "El arte del alma", school: "Escuela Buena Vista", participants: "7 participantes" },
+              { discipline: "Poesía Coral", circuit: "04", title: "Identidad", school: "Escuela La Uvita", participants: "21 participantes" },
+              { discipline: "Poesía Coral", circuit: "09", title: "Somos voz, somos arte", school: "Escuela La Fortuna", participants: "15 participantes" },
+              { discipline: "Poesía Coral", circuit: "07", title: "Cultura de paz", school: "Escuela San Rafael", participants: "30 participantes" },
+              { discipline: "Teatro de Muñecos o Títeres", circuit: "03", title: "En nuestra escuela cabemos todos", school: "Escuela Villa Ligia", participants: "5 participantes" },
+              { discipline: "Teatro de Muñecos o Títeres", circuit: "05", title: "Dino a la violencia", school: "Escuela María Mora Ureña", participants: "5 participantes" },
+              { discipline: "Teatro de Muñecos o Títeres", circuit: "04", title: "Los dos caminos", school: "Escuela Laguna de Barú", participants: "4 participantes" },
+              { discipline: "Teatro de Muñecos o Títeres", circuit: "02", title: "Sembrando Arte", school: "Escuela Pensilvania", participants: "2 participantes" },
+              { discipline: "Teatro de Muñecos o Títeres", circuit: "06", title: "No rendirse en el intento", school: "Escuela Navajuelar", participants: "3 participantes" },
+              { discipline: "Teatro de Muñecos o Títeres", circuit: "10", title: "Leyendas costarricenses", school: "Escuela Lomas de Cocorí", participants: "4 participantes" },
+              { discipline: "Teatro Infantil", circuit: "01", title: "La máquina de los sueños", school: "Escuela Rodrigo Facio Brenes", participants: "9 participantes" },
+              { discipline: "Teatro Infantil", circuit: "05", title: "El misterio del bosque", school: "Escuela Buena Vista", participants: "3 participantes" },
+              { discipline: "Retahíla", circuit: "03", title: "Pregón del FEA", school: "Escuela San Francisco de Asís", participants: "Bryanna Mora Agüero" },
+              { discipline: "Retahíla", circuit: "05", title: "Abuelo Virgilio", school: "Escuela Buena Vista", participants: "Isaías Antonio Castro Portugués" },
+              { discipline: "Retahíla", circuit: "08", title: "Las raíces que cuentan nuestra historia", school: "Escuela Santa Fe", participants: "Thiago Elizondo Retana" },
+              { discipline: "Retahíla", circuit: "02", title: "Leyendas en el celular", school: "Escuela Santa Rosa", participants: "Yander López Amaya" },
+              { discipline: "Retahíla", circuit: "10", title: "Dos tierras y un corazón", school: "Escuela Cristo Rey", participants: "Samantha Bulacar Hidalgo" },
+              { discipline: "Esculturas Vivientes", circuit: "03", title: "El respeto y los valores", school: "Escuela Las Juntas de Pacuar", participants: "Viviana Calvo Godínez / Valentina Román León" },
+              { discipline: "Esculturas Vivientes", circuit: "01", title: "Muestra rural 1950", school: "Escuela Melico Salazar", participants: "Ariana Varela Sancho / Joshua Castillo Padilla" },
+              { discipline: "Esculturas Vivientes", circuit: "09", title: "Celebremos el FEA, 50 años", school: "Escuela Santa Ana", participants: "Victoria Quirós Gamboa / Steicy Torres / Angela Ortiz" },
+              { discipline: "Esculturas Vivientes", circuit: "02", title: "La niña que hace florecer el arte", school: "Escuela Pensilvania", participants: "Nahomi Mora Calvo / Yariel Quesada Arguedas" },
+              { discipline: "Esculturas Vivientes", circuit: "06", title: "El peso de la lectura", school: "Escuela San Pedrito", participants: "Ximena Cordero / Abigail Rojas" },
+              { discipline: "Pintura Corporal", circuit: "03", title: "Latidos de mi tierra", school: "Escuela Las Juntas de Pacuar", participants: "Alany Sofía Ramírez Montero" },
+              { discipline: "Pintura Corporal", circuit: "06", title: "Mi expresión", school: "Escuela Las Mercedes", participants: "Valentina Hidalgo Rojas / Chloe Corea Venegas" }
+            ]
+          },
+          {
+            name: "Auditorio CTP San Isidro",
+            session: "12:00 m.d. • Secundaria",
+            events: [
+              { discipline: "Cuentacuentos", circuit: "01", title: "Al espacio exterior", school: "Liceo Sinaí", participants: "Zabdi Adara Guzmán Alvarado" },
+              { discipline: "Cuentacuentos", circuit: "05", title: "Una dulce elección", school: "CTP General Viejo", participants: "Verónica Ramírez Torres" },
+              { discipline: "Cuentacuentos", circuit: "04", title: "El árbol de guayaba", school: "Liceo Platanillo de Barú", participants: "Keylor Abarca Mora" },
+              { discipline: "Cuentacuentos", circuit: "09", title: "Es sauce del monte", school: "Liceo San Pedro", participants: "Yaxiri Yirlany Mora Marín" },
+              { discipline: "Poesía Coral", circuit: "01", title: "Las voces de la Tule Vieja", school: "Colegio del Valle", participants: "6 participantes" },
+              { discipline: "Teatro de Muñecos o Títeres", circuit: "01", title: "El libro mágico", school: "Liceo Sinaí", participants: "5 participantes" },
+              { discipline: "Teatro", circuit: "01", title: "El arte no muere de hambre", school: "Liceo Unesco", participants: "10 participantes" },
+              { discipline: "Teatro", circuit: "09", title: "Un llamado silencioso", school: "Liceo San Pedro", participants: "8 participantes" },
+              { discipline: "Teatro", circuit: "02", title: "Así sangra la tierra", school: "Liceo Rural El Jardín", participants: "10 participantes" },
+              { discipline: "Teatro", circuit: "06", title: "El mesón de los trámites", school: "Liceo Las Mercedes", participants: "7 participantes" },
+              { discipline: "Teatro", circuit: "10", title: "Hijos de la madre tierra", school: "Liceo Las Esperanzas", participants: "10 participantes" },
+              { discipline: "Retahíla", circuit: "05", title: "Pura vida en Costa Rica", school: "Liceo Canaán", participants: "Dilan Sánchez Valverde" },
+              { discipline: "Esculturas Vivientes", circuit: "06", title: "Estatua Griega", school: "Liceo Las Mercedes", participants: "Demi Sevilla Mairena / Alisson Salazar Hernández" },
+              { discipline: "Esculturas Vivientes", circuit: "09", title: "Esperanza", school: "Liceo San Pedro", participants: "Isabella Campos Barrientos / Alisson Aguirre Campos" },
+              { discipline: "Pintura Corporal", circuit: "03", title: "Florecer de colores", school: "CTP San Isidro", participants: "Idaly Alvarado / Mery Vargas / Allison Obando" },
+              { discipline: "Pintura Corporal", circuit: "05", title: "Belleza Oceánica", school: "Liceo Canaán", participants: "Hillary Cordero / Valeria Garita / Tiffany Miranda" }
+            ]
+          }
+        ]
+      },
+      {
+        id: "day-5",
+        name: "Viernes 02 de octubre",
+        sub: "Artes Literarias",
+        venues: [
+          {
+            name: "Auditorio CTP San Isidro",
+            session: "8:00 a.m. • Primaria",
+            events: [
+              { discipline: "Cuento", circuit: "03", title: "Cuando tiempo florece en nosotros", school: "Escuela Villa Ligia", participants: "Brandon Navarro Ureña" },
+              { discipline: "Cuento", circuit: "01", title: "El cafetal", school: "Escuela La Asunción", participants: "Abigail Solís Badilla" },
+              { discipline: "Cuento", circuit: "05", title: "Diferente a los demás", school: "Escuela Peñas Blancas", participants: "Lizzy Valerín Arroyo" },
+              { discipline: "Cuento", circuit: "09", title: "Tom y el pirata fantasma", school: "Escuela La Fortuna", participants: "Juan Luis Rivera Zúñiga" },
+              { discipline: "Cuento", circuit: "08", title: "El robot salvaje", school: "Escuela El Águila", participants: "Mateo Cerdas Barrantes" },
+              { discipline: "Cuento", circuit: "02", title: "La niña violinista", school: "Escuela Santa Rosa", participants: "Samira Monge Díaz" },
+              { discipline: "Cuento", circuit: "07", title: "El cafetal mágico", school: "Escuela Río Grande", participants: "Ehimy Yulissa Valverde Ortiz" },
+              { discipline: "Cuento", circuit: "06", title: "Karim y la flor encantada de la selva", school: "Escuela El Carmen", participants: "Karim Céspedes Alfaro" },
+              { discipline: "Poesía", circuit: "03", title: "El canto del valle central", school: "Escuela Las Juntas de Pacuar", participants: "Valentina Solís Sancho" },
+              { discipline: "Poesía", circuit: "01", title: "Con el viento y el mar te amo mamá", school: "Escuela San Andrés", participants: "Nicolás Godínez Barahona" },
+              { discipline: "Poesía", circuit: "05", title: "El arte del alma", school: "Escuela Buena Vista", participants: "Sebastián David Porras Calderón" },
+              { discipline: "Poesía", circuit: "09", title: "La gallina", school: "Escuela Laguna", participants: "Evans Josué Carranza Corrales" },
+              { discipline: "Poesía", circuit: "08", title: "El regalo de la lluvia", school: "Escuela El alto de la Trinidad", participants: "Valeria Guadalupe Barboza Picado" },
+              { discipline: "Poesía", circuit: "02", title: "Flor primavera y alegría", school: "Escuela Berlín de Páramo", participants: "Natasha Sofía Navarro Salazar" },
+              { discipline: "Poesía", circuit: "07", title: "Dónde se esconden los sueños", school: "Escuela San Pablo", participants: "Cristiany Varela Ureña" },
+              { discipline: "Poesía", circuit: "06", title: "Las flores de mi jardín", school: "Escuela República de México", participants: "Sofía Valentina Cañas Vargas" },
+              { discipline: "Poesía", circuit: "10", title: "La chispa está en vos: el fuego no desaparece", school: "Escuela Rosario Arróniz", participants: "Luis Carlos Rodríguez Valverde" },
+              { discipline: "Cuento Ilustrado", circuit: "03", title: "El árbol que salvó al mundo", school: "Escuela Las Juntas de Pacuar", participants: "Daliana Jiménez Azofeifa" },
+              { discipline: "Cuento Ilustrado", circuit: "01", title: "El viaje al futuro para salvar al mundo", school: "Escuela San Andrés", participants: "Zoe Mata Segura" },
+              { discipline: "Cuento Ilustrado", circuit: "04", title: "El bosque mágico", school: "Escuela La Uvita", participants: "Lana Pía Francis M." },
+              { discipline: "Cuento Ilustrado", circuit: "05", title: "El tucán y el roble", school: "Escuela María Mora Ureña", participants: "Alana Rodríguez Camacho / Anahí Camacho Reyes" },
+              { discipline: "Cuento Ilustrado", circuit: "09", title: "Mi gatito", school: "Escuela San Rafael Arriba", participants: "James Corrales Leiva" },
+              { discipline: "Cuento Ilustrado", circuit: "08", title: "El bosque de los monstruos", school: "Escuela Santa Cecilia", participants: "Sebastián Valverde Pérez" },
+              { discipline: "Cuento Ilustrado", circuit: "02", title: "El lobito Javi", school: "Escuela Santa Rosa", participants: "Matteo Mora Flores" },
+              { discipline: "Cuento Ilustrado", circuit: "07", title: "La sirena y la perla de la amistad", school: "Escuela San Pablo", participants: "Abigail Castro Gutiérrez" },
+              { discipline: "Fotonovela", circuit: "03", title: "El ukulele perdido", school: "Escuela Las Lagunas", participants: "Abraham Leiva / Elías Nodler Masís" },
+              { discipline: "Fotonovela", circuit: "01", title: "El misterio de cofre perdido", school: "Escuela Francisco Morazán", participants: "Austin Joel Badilla Arroyo" },
+              { discipline: "Fotonovela", circuit: "06", title: "La luz que vive en casa", school: "Escuela República de México", participants: "Santiago Bonilla Delgado" },
+              { discipline: "Microrrelato", circuit: "03", title: "Semillas de empatía", school: "Escuela Las Juntas de Pacuar", participants: "Luis Alejandro García Retana" },
+              { discipline: "Microrrelato", circuit: "01", title: "La Luna", school: "Escuela Quebradas", participants: "Evaluna Mena Vargas" },
+              { discipline: "Microrrelato", circuit: "05", title: "El libro abandonado", school: "Escuela María Mora Ureña", participants: "Marlen Centeno Centeno" },
+              { discipline: "Microrrelato", circuit: "04", title: "Las aventuras de Samantha y Molly", school: "Escuela Pacuarito", participants: "Samantha Castro Badilla" },
+              { discipline: "Microrrelato", circuit: "09", title: "Los colores John", school: "Escuela Nueva Santa Ana", participants: "Karla Saborío Estrada" },
+              { discipline: "Microrrelato", circuit: "08", title: "Casi casi", school: "Escuela Valle la Cruz", participants: "Iker Elizondo Navarro" },
+              { discipline: "Microrrelato", circuit: "07", title: "Fantasía oculta", school: "Escuela San Rafael", participants: "Ilana Guzmán Morales" },
+              { discipline: "Microrrelato", circuit: "06", title: "La semillita que nadie quería", school: "Escuela Quizarrá", participants: "Noah Ramírez Fallas" },
+              { discipline: "Novela Gráfica", circuit: "03", title: "El planeta nos llama", school: "Escuela Las Juntas de Pacuar", participants: "Alany Ramírez / William Valenciano" },
+              { discipline: "Novela Gráfica", circuit: "01", title: "Un paseo por la villa", school: "Escuela Pedro Pérez Zeledón", participants: "Alana Carrillo / Samy Ureña / Josué Mena" },
+              { discipline: "Novela Gráfica", circuit: "06", title: "Un nuevo día, un nuevo amanecer", school: "Escuela Pueblo Nuevo", participants: "María Ángel Badilla Córdoba" },
+              { discipline: "Poesía Indígena", circuit: "03", title: "Kaj Tikwe Tare Tikwe (Mi amada tierra mía)", school: "Escuela Quebrada Honda", participants: "Angie Bejarano Bejarano" },
+              { discipline: "Poesía Indígena", circuit: "05", title: "Mi raíz", school: "Escuela Buena Vista", participants: "Imer Zurdo Miranda" }
+            ]
+          },
+          {
+            name: "Auditorio CTP San Isidro",
+            session: "12:00 m.d. • Secundaria & Nocturnas",
+            events: [
+              { discipline: "Cuento", circuit: "03", title: "Jardín de Cenizas", school: "Centro Educativo BMS", participants: "Keylor Mateo Duarte Delgado" },
+              { discipline: "Cuento", circuit: "01", title: "Ella siempre tuvo la razón", school: "Colegio Científico", participants: "Heisel Valeria Retana Vargas" },
+              { discipline: "Cuento", circuit: "05", title: "Los monstruos de no sé donde", school: "CTP General Viejo", participants: "Evans Matías Guzmán Fonseca" },
+              { discipline: "Cuento", circuit: "04", title: "Las sombras me siguen", school: "Liceo La Uvita", participants: "Fabiola Paniagua Castro" },
+              { discipline: "Cuento", circuit: "09", title: "El último audio", school: "Liceo San Pedro", participants: "Ashley Fiorella Marcia Mora" },
+              { discipline: "Cuento", circuit: "02", title: "Un ladrón de corazón", school: "Liceo Rural Río Nuevo", participants: "Roselyn Mora Cerdas" },
+              { discipline: "Cuento", circuit: "06", title: "Un sueño histórico", school: "Liceo Las Mercedes", participants: "Dilan Cañas Vargas" },
+              { discipline: "Poesía", circuit: "03", title: "Los ojos abiertos", school: "CTP San Isidro", participants: "Zoe García Barquero" },
+              { discipline: "Poesía", circuit: "01", title: "Sombras eternas", school: "Colegio La Asunción", participants: "Ilana Molina Cordero" },
+              { discipline: "Poesía", circuit: "04", title: "Ecos del vacío", school: "Liceo La Uvita", participants: "Alexa Sibaja Valverde" },
+              { discipline: "Poesía", circuit: "05", title: "Nunca seré para siempre", school: "CTP General Viejo", participants: "Evan Adrián Leiva Quesada" },
+              { discipline: "Poesía", circuit: "09", title: "No es el fin del medio", school: "Liceo San Pedro", participants: "Jeremy Julián Gómez Vargas" },
+              { discipline: "Poesía", circuit: "08", title: "Anatomía de la ausencia", school: "CTP Pejibaye", participants: "Yarelys Pérez Zúñiga" },
+              { discipline: "Poesía", circuit: "02", title: "Mi voz, tu voz, nuestra voz por ellos", school: "CTP AIRA", participants: "Sofía Ávila Blanco" },
+              { discipline: "Poesía", circuit: "07", title: "Cincuenta años de arte vivo", school: "Liceo Concepción de Daniel Flores", participants: "María Jesús Monge Navarro" },
+              { discipline: "Poesía", circuit: "06", title: "Amanecer", school: "Liceo Las Mercedes", participants: "Dana Garro Fernández" },
+              { discipline: "Cuento Ilustrado", circuit: "01", title: "Los últimos tres días del reino", school: "UP Dr. R.A. Calderón Guardia", participants: "Yerlin Saucedo Hidalgo" },
+              { discipline: "Cuento Ilustrado", circuit: "03", title: "La aventura de Prometeo de las armas de Dragón", school: "CTP San Isidro", participants: "Ángel Escartín Martínez" },
+              { discipline: "Cuento Ilustrado", circuit: "05", title: "Valeria", school: "Liceo Canaán", participants: "Leonora Villarevia / Gill Piedra" },
+              { discipline: "Cuento Ilustrado", circuit: "02", title: "¿Quién es ella?", school: "Liceo Rural El Jardín", participants: "Tayra Zúñiga Mora" },
+              { discipline: "Microrrelato", circuit: "03", title: "El museo", school: "Liceo Fernando Volio Jiménez", participants: "Kendall Alpízar Campos" },
+              { discipline: "Microrrelato", circuit: "01", title: "Cromofobia", school: "Liceo Sinaí", participants: "Génesis Dalissa Valverde Valverde" },
+              { discipline: "Microrrelato", circuit: "07", title: "El pintor de los sueños", school: "CTP Platanares", participants: "Marialy Pamela Mora Fernández" },
+              { discipline: "Microrrelato", circuit: "06", title: "Perdida entre historias", school: "Liceo Las Mercedes", participants: "Dana Garro Fernández" },
+              { discipline: "Microrrelato", circuit: "05", title: "El lienzo del alma", school: "Liceo Rural Buena Vista", participants: "Gabriela Araya Acuña" },
+              { discipline: "Microrrelato Digital", circuit: "03", title: "Notas equivocadas", school: "CTP San Isidro", participants: "Idaly Alvarado" },
+              { discipline: "Microrrelato Digital", circuit: "01", title: "El precio de la educación (pendiente)", school: "Liceo Sinaí", participants: "Génesis Dalissa Valverde Valverde" },
+              { discipline: "Microrrelato Digital", circuit: "05", title: "Una promesa bajo las estrellas", school: "CTP General Viejo", participants: "Kiara Arce Ampie" },
+              { discipline: "Novela Gráfica", circuit: "09", title: "Ese era el día de mi ejecución", school: "Liceo San Pedro", participants: "Edgardo Alonso Salazar Fonseca" },
+              { discipline: "Cuento (Nocturna)", circuit: "03", title: "Sueños rotos", school: "Colegio Nocturno Palmares", participants: "Keilyn Mora Badilla" },
+              { discipline: "Cuento (Nocturna)", circuit: "01", title: "El silencio que cantaba", school: "Liceo Nocturno Sinaí", participants: "Luis Fabián Quirós Cordero" },
+              { discipline: "Cuento (Nocturna)", circuit: "08", title: "En la mente de Ana", school: "CINDEA Pejibaye", participants: "Kimberly Chanto" },
+              { discipline: "Poesía (Nocturna)", circuit: "03", title: "De pie aunque tiemble", school: "CINDEA Lomas de Cocorí", participants: "Wendy Chacón Elizondo" },
+              { discipline: "Poesía (Nocturna)", circuit: "01", title: "El silencio de jazz: un alma sin curar", school: "Liceo Académico Nocturno Sinaí", participants: "Jazmín Monge Navarro" },
+              { discipline: "Poesía (Nocturna)", circuit: "09", title: "Aires de vuelta", school: "CINDEA San Pedro", participants: "Anthony Valverde Barrantes" },
+              { discipline: "Poesía (Nocturna)", circuit: "08", title: "Lo que fuimos, lo que somos y lo que seremos", school: "CINDEA Pejibaye", participants: "Rosa Mora Agüero" },
+              { discipline: "Novela Gráfica (Nocturna)", circuit: "03", title: "Estela de Luz", school: "CINDEA Lomas de Cocorí", participants: "Daniela Hernández Atencio" }
+            ]
+          }
+        ]
+      }
+    ];
+
+    let currentDayId = "day-1";
+    const scheduleContainer = document.getElementById("scheduleContainer");
+    const searchInput = document.getElementById("searchInput");
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const resultsCountEl = document.getElementById("resultsCount");
+    const emptyStateEl = document.getElementById("emptyState");
+
+    function renderSchedule() {
+      const searchTerm = searchInput.value.trim().toLowerCase();
+      scheduleContainer.innerHTML = "";
+      let totalVisible = 0;
+
+      scheduleData.forEach(day => {
+        const dayMatch = (searchTerm === "") ? (day.id === currentDayId) : true;
+        if (!dayMatch) return;
+
+        let dayHasVisibleCards = false;
+
+        day.venues.forEach(venue => {
+          const filteredEvents = venue.events.filter(ev => {
+            if (!searchTerm) return true;
+            return (
+              ev.title.toLowerCase().includes(searchTerm) ||
+              ev.school.toLowerCase().includes(searchTerm) ||
+              ev.discipline.toLowerCase().includes(searchTerm) ||
+              ev.participants.toLowerCase().includes(searchTerm) ||
+              ev.circuit.includes(searchTerm)
+            );
+          });
+
+          if (filteredEvents.length > 0) {
+            dayHasVisibleCards = true;
+            totalVisible += filteredEvents.length;
+
+            const venueCard = document.createElement("section");
+            venueCard.className = "venue-card";
+
+            venueCard.innerHTML = `
+              <div class="venue-header">
+                <div class="venue-title-group">
+                  <div class="venue-icon-box">
+                    <i data-lucide="map-pin"></i>
+                  </div>
+                  <div>
+                    <h2 class="venue-name">${venue.name}</h2>
+                    <p class="venue-session">${day.name} • ${venue.session}</p>
+                  </div>
+                </div>
+                <span class="circuit-badge">${filteredEvents.length} participante(s)</span>
+              </div>
+              <div class="events-grid">
+                ${filteredEvents.map(ev => `
+                  <article class="event-item">
+                    <div>
+                      <div class="event-badges">
+                        <span class="discipline-badge">${ev.discipline}</span>
+                        <span class="circuit-badge">Circuito ${ev.circuit}</span>
+                      </div>
+                      <h3 class="event-title">“${ev.title}”</h3>
+                      <p class="event-school">
+                        <i data-lucide="graduation-cap" style="width:16px;height:16px;"></i>
+                        ${ev.school}
+                      </p>
+                    </div>
+                    <div class="event-meta">
+                      <span>Participante(s):</span>
+                      <strong>${ev.participants}</strong>
+                    </div>
+                  </article>
+                `).join('')}
+              </div>
+            `;
+            scheduleContainer.appendChild(venueCard);
+          }
+        });
+      });
+
+      // Contador e iconos
+      resultsCountEl.textContent = `${totalVisible} presentación(es) encontrada(s)`;
+      emptyStateEl.style.display = totalVisible === 0 ? "block" : "none";
+      lucide.createIcons();
+    }
+
+    // EVENTOS DE PESTAÑAS
+    tabButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        tabButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentDayId = btn.getAttribute("data-day");
+        searchInput.value = ""; // Limpiar búsqueda para ver el día limpio
+        renderSchedule();
+      });
+    });
+
+    // EVENTO DE BÚSQUEDA
+    searchInput.addEventListener("input", () => {
+      renderSchedule();
+    });
+
+    // Inicializar
+    renderSchedule();
+  </script>
+</body>
+</html>
